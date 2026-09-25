@@ -1,0 +1,148 @@
+@baseUrl = https://6a83-2400-1a00-1b67-2848-44b1-3293-826e-bd5c.ngrok-free.app 
+@userId = 6a44fcb0dc3e1cf8f09a351a
+@tripId = 6a631599c12ee5e6dc03499a
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTU3NGY4YzAwMzI0ZWRlYjE2ODNmYjYiLCJpYXQiOjE3ODUwNTUwODQsImV4cCI6MTc4NTE0MTQ4NH0.bExKkT3QIRR3gfvDU8LIpL02BQU1E5uQO_PxYKk0Ses
+@tripToken=
+### TEST API
+GET {{baseUrl}}
+
+### CREATE USER
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe6@example.com",
+  "password": "test123"
+}
+
+### GET ALL USERS
+GET {{baseUrl}}/users
+
+### GET USER BY ID
+GET {{baseUrl}}/users/{{userId}}
+
+### UPDATE USER BY ID
+PATCH {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated"
+}
+
+### DELETE USER BY ID
+DELETE {{baseUrl}}/users/{{userId}}
+
+### REGISTER USER
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe2@example.com",
+  "password": "test123"
+}
+
+### LOGIN USER
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "jane.doe2@example.com",
+  "password": "test123"
+}
+
+### CREATE TRIP
+POST {{baseUrl}}/trips
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Trip to the moon",
+  "startDate": "2025-12-15",
+  "endDate": "2025-12-16",
+  "budget": {
+    "total": 1000
+  },
+  "destinations": ["Moon", "Mars", "Jupiter"]
+}
+
+### GET ALL TRIPS
+GET {{baseUrl}}/trips
+Authorization: Bearer {{token}}
+
+### GET TRIP BY ID
+GET {{baseUrl}}/trips/{{tripId}}
+Authorization: Bearer {{token}}
+
+### UPDATE TRIP BY ID
+PATCH {{baseUrl}}/trips/{{tripId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Trip to the moon and back",
+  "budget": {
+    "total": 1500
+  }
+}
+
+### DELETE TRIP BY ID
+DELETE {{baseUrl}}/trips/{{tripId}}
+Authorization: Bearer {{token}}
+
+
+### CREATE BAGGAGE
+POST {{baseUrl}}/{{tripId}}/baggages
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+  "name":"jaket"
+}
+
+### SEND TRIP INVITATION
+POST {{baseUrl}}/trips/{{tripId}}/invite
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "collaboratorEmails": [
+    "apekshyatimsina65@gmail.com"
+  ]
+}
+
+### ACCEPT TRIP INVITATION
+GET {{baseUrl}}/trips/{{tripId}}/invite/accept?token={{tripToken}}
+Authorization: Bearer {{token}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
